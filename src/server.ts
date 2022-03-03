@@ -16,10 +16,10 @@ try {
 }
 
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send("Hello!");
 });
 
-app.get('/example', (req, res) => {
+app.get('/example', (_req, res) => {
   res.send("example");
 });
