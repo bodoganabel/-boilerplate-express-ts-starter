@@ -11,7 +11,7 @@ try {
   app.listen(PORT, (): void => {
       console.log(`Connected successfully on port ${PORT}`);
   });
-} catch (error) {
+} catch (error: any) {
   console.error(`Error occured: ${error.message}`);
 }
 
