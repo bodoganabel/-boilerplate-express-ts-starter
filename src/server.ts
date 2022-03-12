@@ -1,5 +1,9 @@
-import express from 'express';
 
+import express from 'express';
+import { importTests } from './tests/import-test';
+
+
+importTests();
 const app = express()
 const PORT: string|number = process.env.PORT || 5000;
 
