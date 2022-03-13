@@ -3,7 +3,7 @@ import express from 'express';
 import { greeterRouter } from '@controllers/';
 
 const app = express();
-const port = 3000; // default port to listen
+const port = process.env.PORT || 3000; // default port to listen
 
 app.use('/api', greeterRouter);
 
