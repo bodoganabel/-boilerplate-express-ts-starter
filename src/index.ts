@@ -1,41 +1,17 @@
-import * as moduleAlias from 'module-alias';
-const sourcePath = process.env.NODE_ENV === 'development' ? 'src' : 'build';
-moduleAlias.addAliases({
-  '@server': sourcePath,
-  '@config': `${sourcePath}/config`,
-  '@domain': `${sourcePath}/domain`,
+import 'module-alias/register';
+import express from 'express';
+import { greeterRouter } from '@controllers/';
+
+const app = express();
+const port = 3000; // default port to listen
+
+app.use('/api', greeterRouter);
+
+app.listen(port, () => {
+    console.log(`Server started at http://localhost:${port}`);
 });
 
-import { createServer } from '@config/express';
-import { AddressInfo } from 'net';
-import http from 'http';
-import { logger } from '@config/logger';
-import { importTests } from './tests/import-test';
-
-const host = process.env.HOST || '0.0.0.0';
-const port = process.env.PORT || '5000';
-
-importTests();
-
-async function startServer() {
-  const app = createServer();
-  const server = http.createServer(app).listen({ host, port }, () => {
-    const addressInfo = server.address() as AddressInfo;
-    logger.info(
-      `Server ready at http://${addressInfo.address}:${addressInfo.port}`,
-    );
-  });
-
-  const signalTraps: NodeJS.Signals[] = ['SIGTERM', 'SIGINT', 'SIGUSR2'];
-  signalTraps.forEach((type) => {
-    process.once(type, async () => {
-      logger.info(`process.once ${type}`);
-
-      server.close(() => {
-        logger.debug('HTTP server closed');
-      });
-    });
-  });
-}
-
-startServer();
+app.get('/', (_req, res) => {
+    res.send("Server is up!<br/>Try: /api/greeter?name=Tester");
+});
+    

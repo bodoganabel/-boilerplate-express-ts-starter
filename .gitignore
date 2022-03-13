@@ -1,34 +1,41 @@
-# Logs
-logs
+lib-cov
+*.seed
 *.log
-npm-debug.log*
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
 
-# Dependencies
-node_modules/
+pids
+logs
+results
+tmp
 
-# Coverage
+# Build
+public/css/main.css
+
+# Coverage reports
 coverage
 
-# Transpiled files
-build/
-
-# VS Code
-.vscode
-!.vscode/tasks.js
-
-# JetBrains IDEs
-.idea/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Misc
-.DS_Store
-
+# API keys and secrets
 .env
-*report.html
-# Local Netlify folder
-.netlify
+
+# Dependency directory
+node_modules
+bower_components
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+
+# ignore yarn.lock
+yarn.lock
