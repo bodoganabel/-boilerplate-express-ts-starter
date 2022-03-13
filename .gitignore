@@ -30,3 +30,5 @@ build/
 
 .env
 *report.html
+# Local Netlify folder
+.netlify

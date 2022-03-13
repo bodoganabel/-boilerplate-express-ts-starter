@@ -5,7 +5,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
+    "allowJs": false, // This can break things
     "importHelpers": true,
     "jsx": "react",
     "alwaysStrict": true,
